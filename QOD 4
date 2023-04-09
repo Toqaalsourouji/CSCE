@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string s;
+
+    cin >> s;
+
+    int h = 0, e = 0, l = 0, o = 0;
+
+    for (int i = 0; i < s.length(); i++) {
+
+        if (s[i] == 'h' && h == 0) {
+            h++;
+        }
+        else if (s[i] == 'e' && h == 1 && e == 0) {
+            e++;
+        }
+        else if (s[i] == 'l' && h == 1 && e == 1 && l < 2) {
+            l++;
+        }
+        else if (s[i] == 'o' && h == 1 && e == 1 && l == 2 && o == 0) {
+            o++;
+        }
+    }
+
+    if (s.length() > 100) {
+        cout << "Wrong" << endl;
+        return 0;
+    }
+    if (h == 1 && e == 1 && l == 2 && o == 1) {
+        cout << "YES" << endl;
+    }
+    else {
+        cout << "NO" << endl;
+    }
+    return 0;
+}
