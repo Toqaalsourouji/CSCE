@@ -1,0 +1,139 @@
+#include <iostream>
+#include <list>
+#include <stack>
+using namespace std;
+
+class Graph
+{
+	int V;
+	list<int>* adj;
+	void DFS(int v, bool visited[]);
+	void fillFinished(int v, bool visited[], stack<int>& finished);
+
+public:
+	Graph(int V);
+	void addEdge(int v, int w);
+	Graph getTranspose();
+	void printGroup();
+};
+
+Graph::Graph(int V)
+{
+	this->V = V;
+	adj = new list<int>[V];
+}
+
+void Graph::DFS(int v, bool visited[])
+{
+	visited[v] = true;
+	cout << v << " ";
+
+	list<int>::iterator i;
+	for (i = adj[v].begin(); i != adj[v].end(); ++i)
+		if (!visited[*i])
+			DFS(*i, visited);
+}
+
+Graph Graph::getTranspose()
+{
+	Graph g(V);
+	for (int v = 0; v < V; v++)
+	{
+		list<int>::iterator i;
+		for (i = adj[v].begin(); i != adj[v].end(); ++i)
+		{
+			g.adj[*i].push_back(v);
+		}
+	}
+	return g;
+}
+
+void Graph::addEdge(int v, int w)
+{
+	adj[v].push_back(w);
+}
+
+void Graph::fillFinished(int v, bool visited[], stack<int>& finished)
+{
+	list<int>::iterator i;
+	visited[v] = true;
+	for (i = adj[v].begin(); i != adj[v].end(); ++i)
+		if (!visited[*i])
+		{
+			fillFinished(*i, visited, finished);
+		}
+	finished.push(v);
+}
+
+void Graph::printGroup()
+{
+	stack<int> finished;
+
+	
+	bool* visited = new bool[V];
+	for (int i = 0; i < V; i++)
+		visited[i] = false;
+
+	
+	for (int i = 0; i < V; i++)
+		if (visited[i] == false)
+			fillFinished(i, visited, finished);
+
+	
+	Graph gr = getTranspose();
+
+
+	for (int i = 0; i < V; i++)
+		visited[i] = false;
+
+	
+	while (finished.empty() == false)
+	{
+		int v = finished.top();
+		finished.pop();
+
+		if (visited[v] == false)
+		{
+			gr.DFS(v, visited);
+			cout << endl;
+		}
+	}
+}
+
+int main()
+{
+
+	
+	Graph g(0);
+	g.addEdge(6, 7);
+	g.addEdge(7, 8);
+	g.addEdge(8, 9);
+	g.addEdge(9, 10);
+	g.addEdge(10, 11);
+	g.addEdge(11, 12);
+	g.addEdge(12, 13);
+	cout << "Following are the groups in "
+		"given graph << endl";
+	g.printGroup();
+
+	
+	Graph g1(1);
+	g1.addEdge(a, b);
+	g1.addEdge(b, c);
+	g1.addEdge(c, d);
+	g1.addEdge(d, e);
+	g1.addEdge(e, f);
+	g1.addEdge(f, g);
+	g1.addEdge(g, h);
+	g1.addEdge(h, i);
+	g1.addEdge(i, j);
+	g1.addEdge(j, k);
+	
+
+	cout << "Following are the groups in "
+		"given graph << endl";
+	g1.printGroup();
+
+
+	return 0;
+}
