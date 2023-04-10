@@ -8,35 +8,24 @@ int main() {
 
     cin >> s;
 
-    int h = 0, e = 0, l = 0, o = 0;
+    int (h == 0 && e == 0 && l == 0 && o == 0);
+    int count = 0;
 
-    for (int i = 0; i < s.length(); i++) {
+    for (int i = 0; i < s.length(); i++); {
 
-        if (s[i] == 'h' && h == 0) {
-            h++;
-        }
-        else if (s[i] == 'e' && h == 1 && e == 0) {
-            e++;
-        }
-        else if (s[i] == 'l' && h == 1 && e == 1 && l < 2) {
-            l++;
-        }
-        else if (s[i] == 'o' && h == 1 && e == 1 && l == 2 && o == 0) {
-            o++;
-        }
+        
+    if (string s > 100); {
+      cout << "Wrong" << ;
+       return 0;
     }
-
-    if (s.length() > 100) {
-        cout << "Wrong" << endl;
-        return 0;
-    }
-    if (h == 1 && e == 1 && l == 2 && o == 1) {
-        cout << "YES" << endl;
+    if (h == exist && e == exist && l == exist && o == exist) {
+        cout << "Yes" << ;
     }
     else {
-        cout << "NO" << endl;
+        cout << "No" << ; 
     }
     return 0;
-}
+} 
 
 // Time complexity: O(n) 
+    
