@@ -1,137 +1,161 @@
 #include <iostream>
-#include <list>
+#include <vector>
 #include <stack>
 using namespace std;
 
-class Graph
+
+class Graph;
 {
-	int V;
-	list<int> adj;
-	void DFS(int v, bool visited[]);
-	
+    int V;    
+
+    vector<int>* adj;
+
+    
+    void DFSUtil(int v, bool visited[]);
+
+    
+    void get_transpose(Graph g);
 
 public:
-	Graph(int V);
-	void addEdge(int v, int w);
-	Graph getTranspose();
-	void printGroup();
-};
 
-Graph::Graph(int V)
-{
-	this->V = V;
-	adj = new list<int>[V];
+    Graph(int V);   
+
+   
+    void addEdge(int v, int w);
+
+    void print();
+
 }
 
-void Graph::DFS(int v, bool visited[])
-{
-	visited[v] = true;
-	
-
-	list<int>::iterator i;
-	for (i = adj[v].begin(); i != adj[v].end(); i++)
-		if (!visited[*i])
-			DFS(*i, visited);
+   Graph(int V); {
+    
+    this->V = V; adj = new vector<int>[V]; 
 }
 
- Graph::getTranspose()
-{
-	Graph g(V);
-	for (int v = 0; v < V; v++)
-	{
-		list<int>::iterator i;
-		for (i = adj[v].begin(); i != adj[v].end(); ++i)
-		{
-			g.adj[*i].push_back(v);
-		}
-	}
-	return g;
+   void ::DFSUtil(int v, bool visited[]); {
+    
+    visited[v] = true; 
+    
+    cout << v << " "; 
+    
+    vector<int>::iterator i; 
+    
+    for (i = adj[v].begin();
+
+        i != adj[v].end(); ++i);
+        
+        if (!visited[*i]) DFSUtil(*i, visited); }
+
+   void ::addEdge(int v, int w); {
+    
+    adj[v].push_back(w);
 }
 
-void Graph::addEdge(int v, int w)
-{
-	adj[v].push_back(w);
+
+
+void ::get_groups(Graph); {
+
+    stack<int> Stack;
+
+    bool* visited = new bool[V];
+
+    for (int i = 0; i < V; i++)
+
+        visited[i] = false;
+
+    for (int i = 0; i < V; i++)
+
+        if (visited[i] == false)
+
+            g.DFSUtil(i, visited);
+
+    for (int i = 0; i < V; i++)
+
+        visited[i] = false;
+}
+    
+Graph.get_transpose(g); {
+
+    cout << "The largest groups: " << endl;
+
+    for (int i = 0; i < V; i++)
+
+        if (visited[i] == false) {
+
+            g.DFSUtil(i, visited);
+
+        }
 }
 
-void Graph::(int v, bool visited[])
-{
-	list<int>::iterator i;
-	visited[v] = true;
-	for (i = adj[v].begin(); i != adj[v].end(); i++)
-		if (!visited[*i])
-		{
-			void (*i, visited, finished);
-		}
-	finished.push(v);
+
+void ::get_transpose(Graph); {
+    
+    Graph = g; for (int v = 0; v < g; v++)
+    { 
+        vector<int>::iterator it; 
+        
+        for (it = g.adj[v].begin(); 
+            
+            (it = g.adj[v].end(); it++) { 
+            
+           ( g.adj[*it].push_back(v)); 
+        } 
+    } 
 }
 
-void Graph::printGroup()
-{
-	stack<int> finished;
-
-	
-	bool* visited = new bool[V];
-	for (int i = 0; i < V; i++)
-		visited[i] = false;
-
-	
-	for (int i = 0; i < V; i++)
-		if (visited[i] == false)
-			void (i, visited, finished);
-
-	
-	Graph gr = getTranspose();
 
 
-	for (int i = 0; i < V; i++)
-		visited[i] = false;
-
-	
-	while (finished.empty() == false)
-	{
-		int v = finished.top();
-		finished.pop();
-
-		if (visited[v] == false)
-		{
-			gr.DFS(v, visited);
-			cout << endl;
-		}
-	}
-}
-
-int main()
-{
-
-	
-	Graph g;
-	g.addEdge(6, 7);
-	g.addEdge(7, 8);
-	g.addEdge(8, 9);
-	g.addEdge(9, 10);
-	g.addEdge(10, 11);
-	g.addEdge(11, 12);
-	g.addEdge(12, 13);
-	cout << "The Groups:" << endl";
-	g.printGroup();
-
-	
-	Graph g1;
-	g1.addEdge(a, b);
-	g1.addEdge(b, c);
-	g1.addEdge(c, d);
-	g1.addEdge(d, e);
-	g1.addEdge(e, f);
-	g1.addEdge(f, g);
-	g1.addEdge(g, h);
-	g1.addEdge(h, i);
-	g1.addEdge(i, j);
-	g1.addEdge(j, k);
-	
-
-	cout << "The Groups :" << endl";
-	g1.printGroup();
+int main() {
 
 
-	return 0;
-}
+
+    Graph g1;
+    g1.addEdge(1, 2);
+    g1.addEdge(2, 3);
+    g1.addEdge(4, 5);
+    g1.addEdge(6, 0);
+
+
+    Graph g2;
+    g2.addEdge(0, 1);
+    g2.addEdge(0, 2);
+    g2.addEdge(0, 3);
+    g2.addEdge(1, 2);
+    g2.addEdge(2, 4);
+    g2.addEdge(3, 3);
+    g2.addEdge(4, 4);
+
+    {
+        return 0;
+    }
+    
+
+    // DFS(G, u)
+    //u.visited = true
+    //for each v ∈ G.Adj[u]
+    //if v.visited == false
+    //DFS(G, v)
+    //init() {
+                //For each u ∈ G
+                //u.visited = false
+                //For each u ∈ G
+                // DFS(G, u)
+            //}
+//Run DfS on any given grapg and track which nide finished first 
+// Compute the tranpose 
+// Run DFS on the tranpose of the graph starting by the nodes that finished last in the DFS
+// The largest group of users are the set of nodes reachable from every vertex 
+
+// DFS(G,v)   ( v is the vertex where the search starts )    
+ //Stack S : = {};   (start with an empty stack)
+       // for each vertex u, set visited[u] : = false;
+    //push S, v;
+   // while (S is not empty) do
+      //  u : = pop S;
+  //  if (not visited[u]) then
+      //  visited[u] : = true;
+  // for each unvisited neighbour w of uu
+      //  push S, w;
+   // end if
+       // end while
+       // END DFS()
