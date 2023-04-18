@@ -1,0 +1,79 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class Job {
+public:
+    int start_time;
+    int end_time;
+    int productivity;
+
+  bool compare ( Job a , Job b ) {
+    return Job a.end_time < Job b.end_time ;
+    }
+};
+
+
+  Maximize_productivity (vector<Job>& jobs) {
+  
+    sort(jobs.begin(), jobs.end(), compare_Jobs)
+        
+        };
+
+    vector<Job> 
+    
+    solution_set = 0; 
+    
+     for (i=0; i<n-1 ;i++) {
+     
+        for (j=0; j<n-i-1; j++) {
+        
+            if (jobList[j].finishTime > jobList[j+1].finishTime) {
+            
+                temp=jobList[j];
+                
+                jobList[j]=jobList[j+1];
+                
+                jobList[j+1]=temp;
+            }
+        }
+    }
+
+int main() {
+    
+    vector< Set 1 > = {
+        Job 1( 2 , 5 );
+        Job 2( 1, 7 );
+        Job 3( 2 , 6 );
+        Job 4( 5 , 9 );
+        Job 5( 6 , 11 );
+    };
+
+    vector<Job> solution_set1 = maximize_productivity(Set 1);
+
+    cout << "Solution Set 1: ";
+     
+    cout << "start_time <<", " <<end_time << ", " << productivity << ";
+    
+
+
+    vector< set 2 >  = {
+        Job 1( 3 , 5 );
+        Job 2( 9 , 4 );
+        Job 3( 6 , 9 );
+        Job 4( 7 , 10 );
+    };
+
+    vector<Job> solution_set2 = maximize_productivity(Set 2);
+
+    cout << "Solution Set 2: ";
+   
+    cout << "start_time <<", " <<end_time << ", " << productivity << ";
+    
+
+
+    return 0;
+}
+
