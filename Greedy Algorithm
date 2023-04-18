@@ -16,7 +16,7 @@ public:
 };
 
 
-  Maximize_productivity (vector<Job>& jobs) {
+  Maximize_productivity (vector <Job> & jobs) {
   
     sort(jobs.begin(), jobs.end(), compare_Jobs)
         
