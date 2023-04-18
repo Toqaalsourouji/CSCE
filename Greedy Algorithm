@@ -43,7 +43,7 @@ public:
 
 int main() {
     
-    vector< Set 1 > = {
+    vector < Set 1 > = {
         Job 1( 2 , 5 );
         Job 2( 1, 7 );
         Job 3( 2 , 6 );
@@ -59,7 +59,7 @@ int main() {
     
 
 
-    vector< set 2 >  = {
+    vector < set 2 >  = {
         Job 1( 3 , 5 );
         Job 2( 9 , 4 );
         Job 3( 6 , 9 );
